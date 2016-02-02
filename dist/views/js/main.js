@@ -445,8 +445,9 @@ var resizePizzas = function(size) {
     //instead of measuring the current size, and then adding or subtracting a pixel width from them,
     //we will just set each size to a % of the parent container
     //now we don't need to call layout i many times.
-    for (var i = 0; i < document.querySelectorAll(".randomPizzaContainer").length; i++) {
-      document.querySelectorAll(".randomPizzaContainer")[i].style.width = sizeSwitcher(size) + '%';
+    var length = document.getElementsByClassName("randomPizzaContainer").length
+    for (var i = 0; i < length; i++) {
+      document.getElementsByClassName("randomPizzaContainer")[i].style.width = sizeSwitcher(size) + '%';
     }
   }
 
@@ -462,8 +463,8 @@ var resizePizzas = function(size) {
 window.performance.mark("mark_start_generating"); // collect timing data
 
 // This for-loop actually creates and appends all of the pizzas when the page loads
+var pizzasDiv = document.getElementById("randomPizzas");
 for (var i = 2; i < 100; i++) {
-  var pizzasDiv = document.getElementById("randomPizzas");
   pizzasDiv.appendChild(pizzaElementGenerator(i));
 }
 
